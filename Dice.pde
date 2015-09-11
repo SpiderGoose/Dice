@@ -1,39 +1,41 @@
 
 
 Die snake;
-Die snake2;
-Die snake3;
-Die snake4;
-Die snake5;
-Die snake6;
-
-
+int diceRoll;
+int sum = 0;
 
 
 void setup()
 {
-	size(800,500);
+	background(40,0,150);
+	size(800,550);
 	noLoop();
 
 }
 void draw()
 {
-	snake = new Die(0,0);
+	background(40,0,150);
+	for(int x=1;x<=800;x+=100)
+	{
+for(int y=1;y<=500;y+=100)
+{
+	snake = new Die(x,y);
+	snake.roll();
 	snake.show();
-	snake2 = new Die(100,100);
-	snake2.show();
-	snake3 = new Die(100,0);
-	snake3.show();
-	snake4 = new Die(200,0);
-	snake4.show();
-	snake5 = new Die(300,0);
-	snake5.show();
-	snake6 = new Die(400,0);
-	snake6.show();
-	}
+	sum = diceRoll + sum;
+
+}
+}
+fill(255);
+textSize(50);
+   text("Total roll = " + sum,0,550);
+
+
+}
 void mousePressed()
 {
 	redraw();
+	sum = 0;
 }
 class Die //models one single dice cube
 {
@@ -44,43 +46,67 @@ class Die //models one single dice cube
 		myX = x;
 		myY = y;
 	}
+
+
 	void roll()
 	{
-		//your code here
+	
+     diceRoll = (int)(Math.random()*6+1);
+
 	}
 	void show()
 	{
 	int siz=100;
 	fill(255);
 	rect(myX,myY,siz,siz);
-	fill(150,20,150);
+	fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
 
+
+
+
+
+
+
+
+if(diceRoll == 1)
+{
 	//rolling a 1
-	//ellipse(myX+50,myY+50,20,20);	
-
+	ellipse(myX+50,myY+50,20,20);	
+}
+else if(diceRoll == 2 ){
 	//rolling a 2
-	//ellipse(myX+75,myY+25,20,20);
-	//ellipse(myX+25,myY+75,20,20);
-
+	ellipse(myX+75,myY+25,20,20);
+	ellipse(myX+25,myY+75,20,20);
+}
+else if(diceRoll == 3)
+{
 	//rolling a 3
-	//ellipse(myX+75,myY+25,20,20);
-	//ellipse(myX+25,myY+75,20,20);	
-	//ellipse(myX+50,myY+50,20,20);
-
+	ellipse(myX+75,myY+25,20,20);
+	ellipse(myX+25,myY+75,20,20);	
+	ellipse(myX+50,myY+50,20,20);
+}
+else if(diceRoll == 4)
+{
 	//rolling a 4
-	//ellipse(myX+25,myY+25,20,20);
-	//ellipse(myX+75,myY+25,20,20);
-	//ellipse(myX+25,myY+75,20,20);
-	//ellipse(myX+75,myY+75,20,20);
+	ellipse(myX+25,myY+25,20,20);
+	ellipse(myX+75,myY+25,20,20);
+	ellipse(myX+25,myY+75,20,20);
+	ellipse(myX+75,myY+75,20,20);
+}
+	
+else if(diceRoll == 5)
+{
 
 	//rolling a 5
 
-      //ellipse(myX+25,myY+25,20,20);
-	  //ellipse(myX+75,myY+25,20,20);
-	  //ellipse(myX+25,myY+75,20,20);
-	  //ellipse(myX+75,myY+75,20,20);
-	  //ellipse(myX+50,myY+50,20,20);
-
+      ellipse(myX+25,myY+25,20,20);
+	  ellipse(myX+75,myY+25,20,20);
+	  ellipse(myX+25,myY+75,20,20);
+	  ellipse(myX+75,myY+75,20,20);
+	  ellipse(myX+50,myY+50,20,20);
+}
+else if(diceRoll == 6)
+{
 	  //rolling a 6
 	  ellipse(myX+25,myY+25,20,20);
 	  ellipse(myX+25,myY+50,20,20);
@@ -89,7 +115,7 @@ class Die //models one single dice cube
 	  ellipse(myX+75,myY+50,20,20);
 	  ellipse(myX+75,myY+75,20,20);
 
-
+}
 
 
 }
